@@ -1,0 +1,67 @@
+{{!< default}}
+{{!--
+This is a custom page template for displaying all blog posts.
+It can be selected from the Ghost admin panel when editing a page.
+--}}
+
+<main class="site-main">
+
+    {{#post}}
+        {{!-- Respect "Show title and feature image" setting from admin panel --}}
+        {{#match @page.show_title_and_feature_image}}
+            <header class="single-header gh-canvas">
+                <h1 class="single-title">{{title}}</h1>
+
+                {{#if custom_excerpt}}
+                    <div class="single-excerpt">
+                        {{custom_excerpt}}
+                    </div>
+                {{/if}}
+
+                {{#if feature_image}}
+                    <figure class="single-media kg-width-wide">
+                        <img
+                            srcset="{{> "srcset"}}"
+                            sizes="(min-width: 1023px) 920px, calc(90vw)"
+                            src="{{img_url feature_image size="l"}}"
+                            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                        >
+                        {{#if feature_image_caption}}
+                            <figcaption>{{feature_image_caption}}</figcaption>
+                        {{/if}}
+                    </figure>
+                {{/if}}
+            </header>
+        {{/match}}
+
+        {{!-- Optional page content (if you add any content to the page in admin) --}}
+        {{#if html}}
+            <div class="single-content gh-content gh-canvas">
+                {{content}}
+            </div>
+        {{/if}}
+    {{/post}}
+
+    {{!-- Blog posts feed section --}}
+    <header class="feed-header gh-canvas">
+        {{#if @custom.feed_title}}
+            <div class="feed-header-wrapper">
+                <h2 class="feed-header-title">{{@custom.feed_title}}</h2>
+            </div>
+        {{/if}}
+    </header>
+
+    {{!-- Posts loop using the theme's custom feed layout --}}
+    <div class="post-feed{{#match @custom.feed_layout "!=" "Minimal"}} expanded{{/match}}{{#match @custom.feed_layout "Right thumbnail"}} right-thumbnail{{/match}}{{#match @custom.feed_layout "Text-only"}} text-only{{/match}} gh-feed gh-canvas">
+        {{#get "posts" limit="all" include="tags,authors"}}
+            {{#foreach posts}}
+                {{> "loop"}}
+            {{/foreach}}
+        {{else}}
+            <div class="gh-canvas">
+                <p>No posts found.</p>
+            </div>
+        {{/get}}
+    </div>
+
+</main>
