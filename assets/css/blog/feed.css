@@ -285,6 +285,36 @@
 
 
 /* =========================================
+   Two-column feed (homepage)
+   ========================================= */
+
+@media (min-width: 768px) {
+    .post-feed.expanded .feed-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4rem;
+    }
+
+    .post-feed.expanded .feed-grid .feed {
+        flex-direction: column;
+        padding: 0;
+        border-top: 0;
+    }
+
+    .post-feed.expanded .feed-grid .feed-image {
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+        margin-bottom: 1.5rem;
+    }
+
+    .post-feed.expanded .feed-grid .feed-right {
+        margin-top: 1rem;
+    }
+}
+
+
+/* =========================================
    Blog category index
    ========================================= */
 

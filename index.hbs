@@ -11,9 +11,11 @@
     </header>
 
     <div class="post-feed{{#match @custom.feed_layout "!=" "Minimal"}} expanded{{/match}}{{#match @custom.feed_layout "Right thumbnail"}} right-thumbnail{{/match}}{{#match @custom.feed_layout "Text-only"}} text-only{{/match}} gh-feed gh-canvas">
-        {{#foreach posts}}
-            {{> "loop"}}
-        {{/foreach}}
+        <div class="feed-grid">
+            {{#foreach posts}}
+                {{> "loop"}}
+            {{/foreach}}
+        </div>
     </div>
 
     {{pagination}}
