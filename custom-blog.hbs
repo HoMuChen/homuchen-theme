@@ -43,7 +43,7 @@ It can be selected from the Ghost admin panel when editing a page.
     {{/post}}
 
     {{!-- Categories with post previews --}}
-    {{#get "tags" limit="all" filter="visibility:public+slug:-service" order="count.posts desc"}}
+    {{#get "tags" limit="all" filter="visibility:public+slug:-service" order="name asc"}}
         {{#foreach tags}}
             {{#get "posts" filter="primary_tag:{{slug}}" limit="3" include="tags,authors"}}
                 {{#if posts}}
