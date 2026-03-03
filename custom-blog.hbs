@@ -1,6 +1,6 @@
 {{!< default}}
 {{!--
-This is a custom page template for displaying all blog posts.
+This is a custom page template for displaying all blog posts grouped by category.
 It can be selected from the Ghost admin panel when editing a page.
 --}}
 
@@ -34,7 +34,7 @@ It can be selected from the Ghost admin panel when editing a page.
             </header>
         {{/match}}
 
-        {{!-- Optional page content (if you add any content to the page in admin) --}}
+        {{!-- Optional page content --}}
         {{#if html}}
             <div class="single-content gh-content gh-canvas">
                 {{content}}
@@ -42,26 +42,30 @@ It can be selected from the Ghost admin panel when editing a page.
         {{/if}}
     {{/post}}
 
-    {{!-- Blog posts feed section --}}
-    <header class="feed-header gh-canvas">
-        {{#if @custom.feed_title}}
-            <div class="feed-header-wrapper">
-                <h2 class="feed-header-title">{{@custom.feed_title}}</h2>
-            </div>
-        {{/if}}
-    </header>
-
-    {{!-- Posts loop using the theme's custom feed layout --}}
-    <div class="post-feed{{#match @custom.feed_layout "!=" "Minimal"}} expanded{{/match}}{{#match @custom.feed_layout "Right thumbnail"}} right-thumbnail{{/match}}{{#match @custom.feed_layout "Text-only"}} text-only{{/match}} gh-feed gh-canvas">
-        {{#get "posts" limit="all" include="tags,authors"}}
-            {{#foreach posts}}
-                {{> "loop"}}
-            {{/foreach}}
-        {{else}}
-            <div class="gh-canvas">
-                <p>No posts found.</p>
-            </div>
-        {{/get}}
-    </div>
+    {{!-- Categories with post previews --}}
+    {{#get "tags" limit="all" filter="visibility:public+slug:-service" order="count.posts desc"}}
+        {{#foreach tags}}
+            {{#get "posts" filter="primary_tag:{{slug}}" limit="3" include="tags,authors"}}
+                {{#if posts}}
+                    <section class="blog-category gh-canvas">
+                        <header class="blog-category-header">
+                            <div class="blog-category-header-left">
+                                <a href="{{../url}}" class="blog-category-name">{{../name}}</a>
+                                {{#if ../description}}
+                                    <p class="blog-category-desc">{{../description}}</p>
+                                {{/if}}
+                            </div>
+                            <a href="{{../url}}" class="blog-category-view-all">查看全部 →</a>
+                        </header>
+                        <div class="blog-category-posts">
+                            {{#foreach posts}}
+                                {{> "category-post"}}
+                            {{/foreach}}
+                        </div>
+                    </section>
+                {{/if}}
+            {{/get}}
+        {{/foreach}}
+    {{/get}}
 
 </main>
