@@ -17,7 +17,7 @@
             "@type": "ListItem",
             "position": 2,
             "name": "{{primary_tag.name}}",
-            "item": "{{@site.url}}{{primary_tag.url absolute="false"}}"
+            "item": "{{#primary_tag}}{{url absolute="true"}}{{/primary_tag}}"
         },
         {
             "@type": "ListItem",
