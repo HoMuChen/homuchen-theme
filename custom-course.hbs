@@ -5,6 +5,40 @@ Select "Course" from the template dropdown in Ghost admin when editing a page.
 Main sales copy is written in the Ghost editor — the template adds hero and pricing CTA.
 --}}
 
+{{#post}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "{{title}}",
+    "description": "{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="40"}}{{/if}}",
+    "url": "{{url absolute="true"}}",
+    "image": "{{#if feature_image}}{{img_url feature_image absolute="true"}}{{else}}{{@site.cover_image}}{{/if}}",
+    "provider": {
+        "@type": "Person",
+        "name": "工程師阿穆",
+        "url": "{{@site.url}}"
+    },
+    "inLanguage": "zh-Hant",
+    "hasCourseInstance": [{
+        "@type": "CourseInstance",
+        "courseMode": "Online",
+        "courseWorkload": "PT8H",
+        "instructor": {
+            "@type": "Person",
+            "name": "工程師阿穆"
+        }
+    }],
+    "offers": [{
+        "@type": "Offer",
+        "category": "Paid",
+        "priceCurrency": "TWD",
+        "price": "2990"
+    }]
+}
+</script>
+{{/post}}
+
 <main class="site-main">
 
     {{#post}}

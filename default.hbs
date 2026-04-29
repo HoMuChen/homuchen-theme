@@ -9,6 +9,28 @@
     <link rel="stylesheet" href="{{asset "built/screen.css"}}">
 
     {{ghost_head}}
+
+    {{#is "home"}}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "工程師阿穆",
+        "alternateName": ["HoMuChen", "穆穆"],
+        "url": "{{@site.url}}",
+        "image": "{{@site.cover_image}}",
+        "jobTitle": "AI Agent 教育工作者、軟體工程師",
+        "description": "幫助非技術人員用 AI Agent 提升工作效率，不需要寫程式也能打造專屬的 AI 工作流。",
+        "knowsAbout": ["AI Agent", "Claude Cowork", "Vibe Coding", "Web Development", "AI 自動化"],
+        "sameAs": [
+            "https://www.instagram.com/homuchen.build.ai",
+            "https://www.threads.com/@homuchen.build.ai",
+            "https://www.youtube.com/@homuchen-build-ai",
+            "https://lin.ee/YvHKldK"
+        ]
+    }
+    </script>
+    {{/is}}
 </head>
 
 <body class="{{body_class}}{{{block "body_class"}}} is-head-{{#match @custom.navigation_layout "Logo on the left"}}left-logo{{else match @custom.navigation_layout "Logo in the middle"}}middle-logo{{else}}stacked{{/match}}{{#match @custom.title_font "=" "Elegant serif"}} has-serif-title{{/match}}{{#match @custom.body_font "=" "Elegant serif"}} has-serif-body{{/match}}{{^is "home"}}{{#if @site.cover_image}} is-head-brand{{/if}}{{/is}}">
@@ -75,6 +97,53 @@
     </div>
 
     <footer class="gh-foot{{#unless @site.secondary_navigation}} no-menu{{/unless}} gh-outer">
+        <div class="gh-foot-cols-wrap gh-inner">
+            <div class="gh-foot-cols">
+                <div class="gh-foot-col">
+                    <h4 class="gh-foot-col-title">主題</h4>
+                    <ul>
+                        <li><a href="/tag/ai/">AI Agent</a></li>
+                        <li><a href="/tag/web-development/">Web 開發</a></li>
+                        <li><a href="/tag/sheng-huo/">生活</a></li>
+                        <li><a href="/tag/du-shu-bi-ji/">讀書筆記</a></li>
+                        <li><a href="/posts/">所有文章</a></li>
+                    </ul>
+                </div>
+                <div class="gh-foot-col">
+                    <h4 class="gh-foot-col-title">服務與課程</h4>
+                    <ul>
+                        <li><a href="/services/">專業服務</a></li>
+                        <li><a href="/courses/">線上課程</a></li>
+                        <li><a href="/about/">關於阿穆</a></li>
+                    </ul>
+                </div>
+                <div class="gh-foot-col">
+                    <h4 class="gh-foot-col-title">關注我</h4>
+                    <ul>
+                        <li><a href="https://www.threads.com/@homuchen.build.ai" target="_blank" rel="noopener">Threads</a></li>
+                        <li><a href="https://www.instagram.com/homuchen.build.ai" target="_blank" rel="noopener">Instagram</a></li>
+                        <li><a href="https://www.youtube.com/@homuchen-build-ai" target="_blank" rel="noopener">YouTube</a></li>
+                        <li><a href="https://lin.ee/YvHKldK" target="_blank" rel="noopener">LINE</a></li>
+                    </ul>
+                </div>
+                {{#if @site.members_enabled}}
+                {{#unless @member}}
+                <div class="gh-foot-col gh-foot-col-form">
+                    <h4 class="gh-foot-col-title">訂閱電子報</h4>
+                    <p class="gh-foot-col-desc">每週收到 AI 實戰教學</p>
+                    <form class="gh-foot-form form-wrapper" data-members-form>
+                        <input class="auth-email" type="email" name="email" data-members-email placeholder="輸入你的 Email" required="true">
+                        <button class="form-button" type="submit" aria-label="Subscribe">
+                            <span class="default">訂閱</span>
+                            <span class="loader">{{> "icons/loader"}}</span>
+                            <span class="success">已送出</span>
+                        </button>
+                    </form>
+                </div>
+                {{/unless}}
+                {{/if}}
+            </div>
+        </div>
         <div class="gh-foot-inner gh-inner">
             <div class="gh-copyright">
                 {{@site.title}} © {{date format="YYYY"}}
