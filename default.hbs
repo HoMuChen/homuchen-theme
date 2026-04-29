@@ -53,7 +53,7 @@
             </div>
 
             <nav class="gh-head-menu">
-                {{navigation}}
+                {{> "navigation"}}
                 {{#unless @site.members_enabled}}
                     {{#match @custom.navigation_layout "Stacked"}}
                         <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search>{{> "icons/search"}}</button>
@@ -96,7 +96,7 @@
         {{{body}}}
     </div>
 
-    <footer class="gh-foot{{#unless @site.secondary_navigation}} no-menu{{/unless}} gh-outer">
+    <footer class="gh-foot gh-outer">
         <div class="gh-foot-cols-wrap gh-inner">
             <div class="gh-foot-cols">
                 <div class="gh-foot-col">
@@ -148,11 +148,6 @@
             <div class="gh-copyright">
                 {{@site.title}} © {{date format="YYYY"}}
             </div>
-            {{#if @site.secondary_navigation}}
-                <nav class="gh-foot-menu">
-                    {{navigation type="secondary"}}
-                </nav>
-            {{/if}}
             <div class="gh-powered-by">
                 <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
             </div>

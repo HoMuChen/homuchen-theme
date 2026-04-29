@@ -1,0 +1,17 @@
+<ul class="nav">
+{{#foreach navigation}}
+    <li class="nav-{{slug}}{{#if current}} nav-current{{/if}}{{#match url "=" "/posts/"}}{{#if @site.secondary_navigation}} has-submenu{{/if}}{{/match}}">
+        <a href="{{url}}">{{label}}</a>
+        {{#match url "=" "/posts/"}}
+            {{#if @site.secondary_navigation}}
+            <span class="nav-submenu-arrow" aria-hidden="true">▾</span>
+            <ul class="nav-submenu">
+                {{#foreach @site.secondary_navigation}}
+                <li class="nav-submenu-{{slug}}{{#if current}} nav-current{{/if}}"><a href="{{url}}">{{label}}</a></li>
+                {{/foreach}}
+            </ul>
+            {{/if}}
+        {{/match}}
+    </li>
+{{/foreach}}
+</ul>
