@@ -1,0 +1,82 @@
+{{!< default}}
+{{!-- Static route template for /services/ --}}
+
+<main class="site-main">
+
+    <header class="single-header gh-canvas">
+        <h1 class="single-title">專業服務</h1>
+        <div class="single-excerpt">
+            讓 AI 真正融入你的工作流程
+        </div>
+    </header>
+
+    {{!-- Service Cards — 自動抓取所有標記 #service internal tag 的 Pages --}}
+    <div class="landing-services gh-canvas">
+        {{#get "pages" filter="tag:hash-service" limit="all" include="tags"}}
+            {{#if pages}}
+            <div class="landing-services-grid">
+                {{#foreach pages}}
+                <div class="landing-service-card">
+                    {{#if feature_image}}
+                        <div class="landing-service-image">
+                            <img
+                                src="{{img_url feature_image size="m"}}"
+                                alt="{{title}}"
+                                loading="lazy"
+                            >
+                        </div>
+                    {{/if}}
+                    <h2 class="landing-service-name">{{title}}</h2>
+                    {{#if custom_excerpt}}
+                        <p class="landing-service-desc">{{custom_excerpt}}</p>
+                    {{else if excerpt}}
+                        <p class="landing-service-desc">{{excerpt words="30"}}</p>
+                    {{/if}}
+                    <a href="{{url}}" class="landing-service-link">了解更多 {{> "icons/chevron-right"}}</a>
+                </div>
+                {{/foreach}}
+            </div>
+            {{else}}
+            <p class="no-services">尚未新增服務。請在 Ghost Admin 建立 Page 並加上 <code>#service</code> tag。</p>
+            {{/if}}
+        {{/get}}
+    </div>
+
+    {{!-- Process Section --}}
+    <section class="landing-process gh-canvas">
+        <h2 class="home-section-title">服務流程</h2>
+        <div class="landing-process-steps">
+            <div class="landing-process-step">
+                <div class="landing-process-number">1</div>
+                <h3>免費諮詢</h3>
+                <p>了解你的需求和現況</p>
+            </div>
+            <div class="landing-process-arrow">{{> "icons/chevron-right"}}</div>
+            <div class="landing-process-step">
+                <div class="landing-process-number">2</div>
+                <h3>需求規劃</h3>
+                <p>制定客製化方案</p>
+            </div>
+            <div class="landing-process-arrow">{{> "icons/chevron-right"}}</div>
+            <div class="landing-process-step">
+                <div class="landing-process-number">3</div>
+                <h3>執行建置</h3>
+                <p>實作 AI 工作流</p>
+            </div>
+            <div class="landing-process-arrow">{{> "icons/chevron-right"}}</div>
+            <div class="landing-process-step">
+                <div class="landing-process-number">4</div>
+                <h3>回顧優化</h3>
+                <p>確認成效並調整</p>
+            </div>
+        </div>
+    </section>
+
+    {{!-- CTA --}}
+    <section class="landing-cta gh-canvas">
+        <h2>有興趣？預約免費諮詢</h2>
+        <p>告訴我你的需求，我們一起找出最適合的方案。</p>
+        <a href="/contact/" class="gh-btn gh-primary-btn home-btn-primary">預約諮詢</a>
+    </section>
+
+</main>

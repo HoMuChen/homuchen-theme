@@ -1,0 +1,52 @@
+{{!< default}}
+{{!--
+Custom page template for course sales pages.
+Select "Course" from the template dropdown in Ghost admin when editing a page.
+Main sales copy is written in the Ghost editor — the template adds hero and pricing CTA.
+--}}
+
+<main class="site-main">
+
+    {{#post}}
+        {{!-- Hero --}}
+        <header class="course-hero gh-outer">
+            <div class="course-hero-inner gh-inner">
+                <h1 class="course-hero-title">{{title}}</h1>
+                {{#if custom_excerpt}}
+                    <p class="course-hero-subtitle">{{custom_excerpt}}</p>
+                {{/if}}
+                <a href="#course-pricing" class="gh-btn gh-primary-btn home-btn-primary">立即報名</a>
+            </div>
+        </header>
+
+        {{!-- Main content from Ghost editor --}}
+        <div class="single-content gh-content gh-canvas">
+            {{content}}
+        </div>
+
+        {{!-- Pricing CTA --}}
+        <section id="course-pricing" class="course-pricing gh-canvas">
+            <div class="course-pricing-card">
+                <h2 class="course-pricing-title">立即報名</h2>
+                <div class="course-pricing-amount">NT$2,990</div>
+                <p class="course-pricing-period">一次付清，永久觀看</p>
+                <ul class="course-pricing-includes">
+                    <li>12 堂完整影片課程</li>
+                    <li>實用 Skill 模板包</li>
+                    <li>文字講義 + 實作練習</li>
+                    <li>未來更新免費觀看</li>
+                </ul>
+                <a href="/contact/" class="gh-btn gh-primary-btn home-btn-primary landing-course-btn">立即報名</a>
+                <p class="course-pricing-note">付款方式：信用卡一次付清</p>
+            </div>
+        </section>
+    {{/post}}
+
+    {{!-- Free content fallback --}}
+    <section class="landing-free-cta gh-canvas">
+        <h2 class="home-section-title">想先免費體驗？</h2>
+        <p>從免費的 AI Agent 系列文章開始，了解課程會教什麼。</p>
+        <a href="/posts/" class="home-view-all">查看免費文章 {{> "icons/chevron-right"}}</a>
+    </section>
+
+</main>

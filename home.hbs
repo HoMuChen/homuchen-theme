@@ -1,0 +1,123 @@
+{{!< default}}
+{{!-- Landing page for / route. Self-contained hero + value props + featured posts + about + newsletter --}}
+
+<main class="site-main home-main">
+
+    {{!-- Hero Section --}}
+    <section class="home-hero gh-outer{{#if @site.cover_image}} has-cover{{/if}}">
+        {{#if @site.cover_image}}
+            <img class="home-hero-bg u-object-fit" src="{{@site.cover_image}}" alt="{{@site.title}}">
+        {{/if}}
+        <div class="home-hero-inner gh-inner">
+            <h1 class="home-hero-title">讓 AI 成為你的工作夥伴</h1>
+            <p class="home-hero-description">我是工程師阿穆，幫助非技術人員用 AI Agent 提升工作效率。<br>不需要寫程式，也能打造專屬的 AI 工作流。</p>
+            <div class="home-hero-cta">
+                <a href="/posts/" class="gh-btn gh-primary-btn home-btn-primary">免費開始學習</a>
+                <a href="/services/" class="gh-btn home-btn-secondary">了解服務</a>
+            </div>
+        </div>
+    </section>
+
+    {{!-- Value Propositions --}}
+    <section class="home-values gh-outer">
+        <div class="home-values-inner gh-inner">
+            <div class="home-value-card">
+                <div class="home-value-icon">&#x1F4DD;</div>
+                <h3 class="home-value-title">100+ 免費文章</h3>
+                <p class="home-value-desc">AI、Web 開發、生活生產力，技術實戰教學全部免費閱讀。</p>
+                <a href="/posts/" class="home-value-link">瀏覽文章 {{> "icons/chevron-right"}}</a>
+            </div>
+            <div class="home-value-card">
+                <div class="home-value-icon">&#x1F4DA;</div>
+                <h3 class="home-value-title">線上課程</h3>
+                <p class="home-value-desc">AI Agent 實戰班，從零開始打造你的 AI 工作夥伴。</p>
+                <a href="/courses/" class="home-value-link">了解課程 {{> "icons/chevron-right"}}</a>
+            </div>
+            <div class="home-value-card">
+                <div class="home-value-icon">&#x1F91D;</div>
+                <h3 class="home-value-title">專業服務</h3>
+                <p class="home-value-desc">AI 自動化工作流、AI 客製化系統建置、電商網站與品牌網站建置。</p>
+                <a href="/services/" class="home-value-link">了解服務 {{> "icons/chevron-right"}}</a>
+            </div>
+        </div>
+    </section>
+
+    {{!-- Featured Posts --}}
+    {{#get "posts" filter="featured:true" limit="3" include="tags,authors"}}
+        {{#if posts}}
+        <section class="home-featured gh-outer">
+            <div class="home-featured-inner gh-inner">
+                <h2 class="home-section-title">精選文章</h2>
+                <div class="home-featured-grid">
+                    {{#foreach posts}}
+                    <article class="home-featured-card {{post_class}}">
+                        <a href="{{url}}" class="home-featured-card-link">
+                            {{#if feature_image}}
+                            <div class="home-featured-image u-placeholder horizontal">
+                                <img
+                                    class="u-object-fit"
+                                    srcset="{{> "srcset"}}"
+                                    sizes="(min-width: 1024px) 340px, (min-width: 768px) 45vw, 90vw"
+                                    src="{{img_url feature_image size="m"}}"
+                                    alt="{{title}}"
+                                    loading="lazy"
+                                >
+                            </div>
+                            {{/if}}
+                            <h3 class="home-featured-card-title">{{title}}</h3>
+                            {{#if excerpt}}
+                                <p class="home-featured-card-excerpt">{{excerpt words="20"}}</p>
+                            {{/if}}
+                        </a>
+                    </article>
+                    {{/foreach}}
+                </div>
+                <a href="/posts/" class="home-view-all">查看全部文章 {{> "icons/chevron-right"}}</a>
+            </div>
+        </section>
+        {{/if}}
+    {{/get}}
+
+    {{!-- About Snippet --}}
+    <section class="home-about gh-outer">
+        <div class="home-about-inner gh-inner">
+            {{#get "pages" filter="slug:about" limit="1"}}
+                {{#foreach pages}}
+                    {{#if feature_image}}
+                    <div class="home-about-image">
+                        <img src="{{img_url feature_image size="m"}}" alt="HoMuChen" loading="lazy">
+                    </div>
+                    {{/if}}
+                {{/foreach}}
+            {{/get}}
+            <div class="home-about-content">
+                <h2 class="home-section-title">關於我</h2>
+                <p>嗨，我是工程師阿穆！熱愛把複雜技術用簡單的方式說清楚，目前專注在 AI Agent 教育，幫助非技術人員也能善用 AI 提升工作效率。</p>
+                <a href="/about/" class="home-value-link">了解更多 {{> "icons/chevron-right"}}</a>
+            </div>
+        </div>
+    </section>
+
+    {{!-- Newsletter CTA --}}
+    {{#if @site.members_enabled}}
+    {{#unless @member}}
+    <section class="home-newsletter gh-outer">
+        <div class="home-newsletter-inner gh-inner">
+            <h2 class="home-section-title">訂閱電子報</h2>
+            <p class="home-newsletter-desc">每週收到最新的 AI 實戰教學，直接送到你的信箱。</p>
+            <form class="form-wrapper home-newsletter-form" data-members-form>
+                <input class="auth-email" type="email" name="email" data-members-email placeholder="輸入你的 Email" required="true">
+                <button class="form-button" type="submit" aria-label="Subscribe">
+                    <span class="default">訂閱</span>
+                    <span class="loader">{{> "icons/loader"}}</span>
+                    <span class="success">已送出</span>
+                </button>
+            </form>
+        </div>
+    </section>
+    {{/unless}}
+    {{/if}}
+
+</main>
+
+{{#contentFor "body_class"}} home-landing{{/contentFor}}

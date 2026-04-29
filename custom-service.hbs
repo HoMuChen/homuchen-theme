@@ -1,0 +1,47 @@
+{{!< default}}
+{{!--
+Custom page template for individual service pages.
+Select "Service" from the template dropdown in Ghost admin when editing a page.
+Content is written in the Ghost editor — the template adds hero and CTA.
+--}}
+
+<main class="site-main">
+
+    {{#post}}
+        <header class="single-header gh-canvas">
+            <h1 class="single-title">{{title}}</h1>
+            {{#if custom_excerpt}}
+                <div class="single-excerpt">
+                    {{custom_excerpt}}
+                </div>
+            {{/if}}
+        </header>
+
+        {{#if feature_image}}
+            <figure class="single-media gh-canvas kg-width-wide">
+                <img
+                    srcset="{{> "srcset"}}"
+                    sizes="(min-width: 1023px) 920px, calc(90vw)"
+                    src="{{img_url feature_image size="l"}}"
+                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                >
+            </figure>
+        {{/if}}
+
+        <div class="single-content gh-content gh-canvas">
+            {{content}}
+        </div>
+    {{/post}}
+
+    {{!-- Bottom CTA --}}
+    <section class="landing-cta gh-canvas">
+        <h2>對這個服務有興趣？</h2>
+        <p>預約一次免費諮詢，告訴我你的需求。</p>
+        <a href="/contact/" class="gh-btn gh-primary-btn home-btn-primary">預約免費諮詢</a>
+    </section>
+
+    <div class="landing-back gh-canvas">
+        <a href="/services/" class="home-value-link">{{> "icons/arrow-left"}} 查看所有服務</a>
+    </div>
+
+</main>
