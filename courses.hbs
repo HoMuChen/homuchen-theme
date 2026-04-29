@@ -1,0 +1,89 @@
+{{!< default}}
+{{!-- Static route template for /courses/ --}}
+
+<main class="site-main">
+
+    <header class="single-header gh-canvas">
+        <h1 class="single-title">線上課程</h1>
+        <div class="single-excerpt">
+            從零開始，讓 AI 幫你做事
+        </div>
+    </header>
+
+    {{!-- Course Cards — 自動抓取所有標記 #course internal tag 的 Pages --}}
+    <div class="landing-courses gh-canvas">
+        {{#get "pages" filter="tag:hash-course" limit="all" include="tags"}}
+            {{#if pages}}
+                {{#foreach pages}}
+                <div class="landing-course-card">
+                    <h2 class="landing-course-title">{{title}}</h2>
+                    {{#if custom_excerpt}}
+                        <p class="landing-course-subtitle">{{custom_excerpt}}</p>
+                    {{/if}}
+                    {{#if feature_image}}
+                        <div class="landing-course-image">
+                            <img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy">
+                        </div>
+                    {{/if}}
+                    <a href="{{url}}" class="gh-btn gh-primary-btn home-btn-primary landing-course-btn">了解課程內容</a>
+                </div>
+                {{/foreach}}
+            {{else}}
+                <p class="no-services">尚未新增課程。請在 Ghost Admin 建立 Page 並加上 <code>#course</code> tag。</p>
+            {{/if}}
+        {{/get}}
+    </div>
+
+    {{!-- Free Content CTA --}}
+    <section class="landing-free-cta gh-canvas">
+        <h2 class="home-section-title">想先試試？</h2>
+        <p>從免費的 AI Agent 系列文章開始，了解 AI Agent 的基礎觀念和實戰應用。</p>
+
+        {{#get "posts" filter="tag:ai" limit="3" include="tags"}}
+            {{#if posts}}
+            <div class="home-featured-grid">
+                {{#foreach posts}}
+                <article class="home-featured-card">
+                    <a href="{{url}}" class="home-featured-card-link">
+                        {{#if feature_image}}
+                        <div class="home-featured-image u-placeholder horizontal">
+                            <img
+                                class="u-object-fit"
+                                src="{{img_url feature_image size="m"}}"
+                                alt="{{title}}"
+                                loading="lazy"
+                            >
+                        </div>
+                        {{/if}}
+                        <h3 class="home-featured-card-title">{{title}}</h3>
+                    </a>
+                </article>
+                {{/foreach}}
+            </div>
+            {{/if}}
+        {{/get}}
+
+        <a href="/posts/" class="home-view-all">查看全部文章 {{> "icons/chevron-right"}}</a>
+    </section>
+
+    {{!-- Newsletter --}}
+    {{#if @site.members_enabled}}
+    {{#unless @member}}
+    <section class="home-newsletter gh-outer">
+        <div class="home-newsletter-inner gh-inner">
+            <h2 class="home-section-title">訂閱獲得開課通知</h2>
+            <p class="home-newsletter-desc">有新課程上線時，第一時間通知你。</p>
+            <form class="form-wrapper home-newsletter-form" data-members-form>
+                <input class="auth-email" type="email" name="email" data-members-email placeholder="輸入你的 Email" required="true">
+                <button class="form-button" type="submit" aria-label="Subscribe">
+                    <span class="default">訂閱</span>
+                    <span class="loader">{{> "icons/loader"}}</span>
+                    <span class="success">已送出</span>
+                </button>
+            </form>
+        </div>
+    </section>
+    {{/unless}}
+    {{/if}}
+
+</main>

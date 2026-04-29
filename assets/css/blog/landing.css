@@ -1,0 +1,833 @@
+/* ============================================
+   Landing pages: home, services, courses
+   ============================================ */
+
+/* --- Hide default cover/featured on home landing --- */
+.home-landing .cover,
+.home-landing .featured-wrapper {
+    display: none;
+}
+
+.home-landing .site-content {
+    padding-top: 0;
+}
+
+/* ============================================
+   HOME — Hero
+   ============================================ */
+
+.home-hero {
+    position: relative;
+    background-color: #09192c;
+    color: #fff;
+    padding: 16vmin 0;
+    text-align: center;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.home-hero.has-cover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.home-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.home-hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.home-hero-title {
+    font-size: 4.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0 0 1.5rem;
+    color: #fff;
+}
+
+.home-hero-description {
+    font-size: 2rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 3rem;
+}
+
+.home-hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.home-btn-primary {
+    background-color: var(--brand-color, #ff572f);
+    color: #fff;
+    padding: 0 2rem;
+    height: 44px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.home-btn-primary:hover {
+    opacity: 0.9;
+}
+
+.home-btn-secondary {
+    background-color: transparent;
+    color: #fff;
+    padding: 0 2rem;
+    height: 44px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.home-btn-secondary:hover {
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* ============================================
+   HOME — Value Props
+   ============================================ */
+
+.home-values {
+    padding: 6vmin 0;
+}
+
+.home-values-inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.home-value-card {
+    text-align: center;
+    padding: 2rem;
+}
+
+.home-value-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.home-value-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 0.8rem;
+    color: var(--primary-text-color);
+}
+
+.home-value-desc {
+    font-size: 1.5rem;
+    color: var(--secondary-text-color);
+    line-height: 1.6;
+    margin: 0 0 1rem;
+}
+
+.home-value-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--brand-color);
+    text-decoration: none;
+    transition: gap 0.2s var(--animation-base);
+}
+
+.home-value-link:hover {
+    gap: 0.7rem;
+}
+
+.home-value-link svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--brand-color);
+}
+
+/* ============================================
+   HOME — Section Titles
+   ============================================ */
+
+.home-section-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    text-align: center;
+    margin: 0 0 2rem;
+    color: var(--primary-text-color);
+}
+
+/* ============================================
+   HOME — Featured Posts Grid
+   ============================================ */
+
+.home-featured {
+    padding: 4vmin 0;
+    background-color: var(--lighter-gray-color);
+}
+
+.home-featured-inner {
+    text-align: center;
+}
+
+.home-featured-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.home-featured-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s var(--animation-base);
+}
+
+.home-featured-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.home-featured-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.home-featured-image {
+    border-radius: 0;
+}
+
+.home-featured-card-title {
+    font-size: 1.7rem;
+    font-weight: 700;
+    padding: 1.2rem 1.5rem 0.5rem;
+    margin: 0;
+    line-height: 1.4;
+    color: var(--primary-text-color);
+}
+
+.home-featured-card-excerpt {
+    font-size: 1.4rem;
+    color: var(--secondary-text-color);
+    padding: 0 1.5rem 1.5rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.home-view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--brand-color);
+    text-decoration: none;
+    transition: gap 0.2s var(--animation-base);
+}
+
+.home-view-all:hover {
+    gap: 0.7rem;
+}
+
+.home-view-all svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--brand-color);
+}
+
+/* ============================================
+   HOME — About Snippet
+   ============================================ */
+
+.home-about {
+    padding: 6vmin 0;
+}
+
+.home-about-inner {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.home-about-image {
+    flex-shrink: 0;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.home-about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.home-about-content {
+    flex: 1;
+}
+
+.home-about-content .home-section-title {
+    text-align: left;
+}
+
+.home-about-content p {
+    font-size: 1.6rem;
+    color: var(--secondary-text-color);
+    line-height: 1.7;
+    margin: 0 0 1.2rem;
+}
+
+/* ============================================
+   HOME — Newsletter
+   ============================================ */
+
+.home-newsletter {
+    background-color: var(--lighter-gray-color);
+    padding: 6vmin 0;
+    text-align: center;
+}
+
+.home-newsletter-inner {
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.home-newsletter-desc {
+    font-size: 1.6rem;
+    color: var(--secondary-text-color);
+    margin: 0 0 2rem;
+}
+
+.home-newsletter-form {
+    justify-content: center;
+}
+
+/* ============================================
+   SERVICES — Landing page cards
+   ============================================ */
+
+.landing-services {
+    padding: 2rem 0 4rem;
+}
+
+.landing-services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.landing-service-card {
+    background: #fff;
+    border: 1px solid var(--light-gray-color);
+    border-radius: 8px;
+    padding: 2.5rem;
+    transition: box-shadow 0.2s var(--animation-base);
+}
+
+.landing-service-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.landing-service-icon {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+}
+
+.landing-service-name {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem;
+    color: var(--primary-text-color);
+}
+
+.landing-service-target {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--brand-color);
+    margin: 0 0 1rem;
+}
+
+.landing-service-desc {
+    font-size: 1.5rem;
+    color: var(--secondary-text-color);
+    line-height: 1.6;
+    margin: 0 0 1.2rem;
+}
+
+.landing-service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+}
+
+.landing-service-features li {
+    font-size: 1.4rem;
+    color: var(--primary-text-color);
+    padding: 0.3rem 0;
+    padding-left: 1.6rem;
+    position: relative;
+}
+
+.landing-service-features li::before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    color: var(--brand-color);
+    font-weight: 700;
+}
+
+.landing-service-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 1.2rem;
+    background-color: var(--lighter-gray-color);
+}
+
+.landing-service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.landing-service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--brand-color);
+    text-decoration: none;
+    transition: gap 0.2s var(--animation-base);
+}
+
+.landing-service-link:hover {
+    gap: 0.7rem;
+}
+
+.landing-service-link svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--brand-color);
+}
+
+/* ============================================
+   SERVICES — Process
+   ============================================ */
+
+.landing-process {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.landing-process-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.landing-process-step {
+    text-align: center;
+    padding: 1.5rem;
+    min-width: 140px;
+}
+
+.landing-process-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--brand-color);
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+}
+
+.landing-process-step h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 0.3rem;
+    color: var(--primary-text-color);
+}
+
+.landing-process-step p {
+    font-size: 1.3rem;
+    color: var(--secondary-text-color);
+    margin: 0;
+}
+
+.landing-process-arrow {
+    color: var(--mid-gray-color);
+}
+
+.landing-process-arrow svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--mid-gray-color);
+}
+
+/* ============================================
+   SHARED — CTA Section
+   ============================================ */
+
+.landing-cta {
+    text-align: center;
+    padding: 4rem 0;
+    margin: 2rem 0;
+    border-top: 1px solid var(--light-gray-color);
+}
+
+.landing-cta h2 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin: 0 0 0.8rem;
+}
+
+.landing-cta p {
+    font-size: 1.6rem;
+    color: var(--secondary-text-color);
+    margin: 0 0 2rem;
+}
+
+.landing-back {
+    text-align: center;
+    padding: 0 0 4rem;
+}
+
+.landing-back svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--brand-color);
+}
+
+/* ============================================
+   COURSES — Course card
+   ============================================ */
+
+.landing-courses {
+    padding: 2rem 0 4rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.landing-course-card {
+    border: 2px solid var(--brand-color);
+    border-radius: 12px;
+    padding: 3rem;
+    text-align: center;
+    position: relative;
+}
+
+.landing-course-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--brand-color);
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 800;
+    padding: 0.3rem 1.2rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.landing-course-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin: 1rem 0 0.5rem;
+    color: var(--primary-text-color);
+}
+
+.landing-course-subtitle {
+    font-size: 1.6rem;
+    color: var(--secondary-text-color);
+    margin: 0 0 2rem;
+}
+
+.landing-course-highlights {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+    text-align: left;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.landing-course-highlights li {
+    font-size: 1.5rem;
+    color: var(--primary-text-color);
+    padding: 0.5rem 0;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.landing-course-highlights li::before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    color: var(--brand-color);
+    font-weight: 700;
+}
+
+.landing-course-price {
+    margin-bottom: 2rem;
+}
+
+.landing-course-amount {
+    display: block;
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: var(--primary-text-color);
+}
+
+.landing-course-period {
+    font-size: 1.4rem;
+    color: var(--secondary-text-color);
+}
+
+.landing-course-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    background-color: var(--lighter-gray-color);
+}
+
+.landing-course-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.landing-course-btn {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+}
+
+/* ============================================
+   COURSES — Course sales page (custom-course)
+   ============================================ */
+
+.course-hero {
+    background-color: #09192c;
+    color: #fff;
+    padding: 6vmin 0;
+    text-align: center;
+}
+
+.course-hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.course-hero-title {
+    font-size: 3.2rem;
+    font-weight: 800;
+    margin: 0 0 1rem;
+    color: #fff;
+}
+
+.course-hero-subtitle {
+    font-size: 1.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0 0 2rem;
+}
+
+.course-pricing {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.course-pricing-card {
+    border: 2px solid var(--brand-color);
+    border-radius: 12px;
+    padding: 3rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.course-pricing-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 1rem;
+}
+
+.course-pricing-amount {
+    font-size: 3.6rem;
+    font-weight: 800;
+    color: var(--brand-color);
+}
+
+.course-pricing-period {
+    font-size: 1.4rem;
+    color: var(--secondary-text-color);
+    margin: 0 0 2rem;
+    display: block;
+}
+
+.course-pricing-includes {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+    text-align: left;
+}
+
+.course-pricing-includes li {
+    font-size: 1.5rem;
+    padding: 0.4rem 0;
+    padding-left: 2rem;
+    position: relative;
+    color: var(--primary-text-color);
+}
+
+.course-pricing-includes li::before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    color: var(--brand-color);
+    font-weight: 700;
+}
+
+.course-pricing-note {
+    font-size: 1.3rem;
+    color: var(--secondary-text-color);
+    margin: 1rem 0 0;
+}
+
+/* ============================================
+   FREE CTA section (shared)
+   ============================================ */
+
+.landing-free-cta {
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.landing-free-cta p {
+    font-size: 1.6rem;
+    color: var(--secondary-text-color);
+    margin: 0 0 2rem;
+}
+
+.landing-free-cta .home-featured-grid {
+    margin-bottom: 2rem;
+}
+
+/* ============================================
+   POST — Bottom CTA
+   ============================================ */
+
+.post-cta {
+    margin-top: 4rem;
+    padding: 3rem;
+    background-color: var(--lighter-gray-color);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.post-cta h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem;
+}
+
+.post-cta p {
+    font-size: 1.5rem;
+    color: var(--secondary-text-color);
+    margin: 0 0 1.5rem;
+}
+
+.post-cta .form-wrapper {
+    justify-content: center;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 768px) {
+    .home-hero {
+        min-height: 60vh;
+        padding: 12vmin 0;
+    }
+
+    .home-hero-title {
+        font-size: 3.2rem;
+    }
+
+    .home-hero-description {
+        font-size: 1.7rem;
+    }
+
+    .home-values-inner {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .home-featured-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home-about-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .home-about-content .home-section-title {
+        text-align: center;
+    }
+
+    .landing-services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .landing-process-steps {
+        flex-direction: column;
+    }
+
+    .landing-process-arrow {
+        transform: rotate(90deg);
+    }
+
+    .course-hero-title {
+        font-size: 2.4rem;
+    }
+}

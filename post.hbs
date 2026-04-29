@@ -6,6 +6,24 @@
         {{> "content" width="wide"}}
     {{/post}}
 
+    {{!-- Post CTA --}}
+    <section class="post-cta gh-canvas">
+        <h3>想學更多？</h3>
+        <p>訂閱電子報，每週收到最新的 AI 實戰教學。</p>
+        {{#if @site.members_enabled}}
+            {{#unless @member}}
+                <form class="form-wrapper" data-members-form>
+                    <input class="auth-email" type="email" name="email" data-members-email placeholder="輸入你的 Email" required="true">
+                    <button class="form-button" type="submit" aria-label="Subscribe">
+                        <span class="default">訂閱</span>
+                        <span class="loader">{{> "icons/loader"}}</span>
+                        <span class="success">已送出</span>
+                    </button>
+                </form>
+            {{/unless}}
+        {{/if}}
+    </section>
+
     {{#if @custom.show_related_posts}}
         {{> "related-posts"}}
     {{/if}}
