@@ -1040,3 +1040,100 @@
         font-size: 1.4rem;
     }
 }
+
+/* ==========================================================================
+   Tag page — topical hub hero
+   ========================================================================== */
+
+.tag-hero {
+    padding: 5rem 0 3rem;
+    background-color: var(--lighter-gray-color, #f7f8fa);
+    border-bottom: 1px solid var(--color-border, rgba(0, 0, 0, 0.06));
+}
+
+.tag-hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    font-size: 1.4rem;
+    color: var(--color-midgrey, #738a94);
+    margin-bottom: 1.6rem;
+    flex-wrap: wrap;
+}
+
+.breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.breadcrumb a:hover {
+    color: var(--ghost-accent-color, #15171a);
+}
+
+.breadcrumb-sep {
+    opacity: 0.5;
+}
+
+.breadcrumb-current {
+    color: var(--color-darkgrey, #15171a);
+    font-weight: 500;
+}
+
+.tag-hero-media {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 1.6rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #fff;
+}
+
+.tag-hero-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tag-hero-title {
+    font-size: 4.2rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0 0 1.6rem;
+    color: var(--color-darkgrey, #15171a);
+}
+
+.tag-hero-description {
+    font-size: 1.7rem;
+    line-height: 1.7;
+    color: var(--secondary-text-color, #4a4a4a);
+    margin: 0 0 1.6rem;
+    text-align: left;
+}
+
+.tag-hero-meta {
+    font-size: 1.4rem;
+    color: var(--color-midgrey, #738a94);
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .tag-hero {
+        padding: 3rem 0 2rem;
+    }
+
+    .tag-hero-title {
+        font-size: 3rem;
+    }
+
+    .tag-hero-description {
+        font-size: 1.5rem;
+    }
+}

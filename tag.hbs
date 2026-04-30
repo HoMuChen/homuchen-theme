@@ -1,24 +1,64 @@
 {{!< default}}
 
+{{#tag}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{@site.url}}/" },
+                { "@type": "ListItem", "position": 2, "name": "所有文章", "item": "{{@site.url}}/posts/" },
+                { "@type": "ListItem", "position": 3, "name": "{{name}}", "item": "{{url absolute="true"}}" }
+            ]
+        },
+        {
+            "@type": "CollectionPage",
+            "name": "{{name}}",
+            "description": "{{description}}",
+            "url": "{{url absolute="true"}}",
+            "isPartOf": {
+                "@type": "WebSite",
+                "url": "{{@site.url}}",
+                "name": "{{@site.title}}"
+            }
+        }
+    ]
+}
+</script>
+{{/tag}}
+
 <main class="site-main">
 
     {{#tag}}
-    <section class="taxonomy">
+    <header class="tag-hero gh-outer">
+        <div class="tag-hero-inner gh-inner">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="/">Home</a>
+                <span class="breadcrumb-sep" aria-hidden="true">›</span>
+                <a href="/posts/">所有文章</a>
+                <span class="breadcrumb-sep" aria-hidden="true">›</span>
+                <span class="breadcrumb-current">{{name}}</span>
+            </nav>
 
-        {{#if feature_image}}
-            <div class="taxonomy-media u-placeholder square">
-                <img class="u-object-fit" src="{{img_url feature_image size="s"}}" alt="{{name}}">
-            </div>
-        {{/if}}
-
-        <header class="single-header gh-canvas">
-            <h1 class="single-title">{{name}}</h1>
-            {{#if description}}
-                <div class="single-excerpt">{{description}}</div>
+            {{#if feature_image}}
+                <div class="tag-hero-media">
+                    <img src="{{img_url feature_image size="m"}}" alt="{{name}}" loading="lazy">
+                </div>
             {{/if}}
-        </header>
 
-    </section>
+            <h1 class="tag-hero-title">{{name}}</h1>
+
+            {{#if description}}
+                <div class="tag-hero-description">{{description}}</div>
+            {{/if}}
+
+            {{#if count.posts}}
+                <p class="tag-hero-meta">共 {{count.posts}} 篇文章</p>
+            {{/if}}
+        </div>
+    </header>
     {{/tag}}
 
     <div class="post-feed gh-feed gh-canvas">
