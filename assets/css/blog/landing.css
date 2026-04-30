@@ -931,15 +931,11 @@
 }
 
 /* ==========================================================================
-   Header nav — submenu dropdown (driven by Ghost secondary navigation)
+   Header nav — submenu dropdown driven by Ghost secondary navigation
    ========================================================================== */
 
 .gh-head-menu .nav .has-submenu {
     position: relative;
-}
-
-.gh-head-menu .nav .has-submenu > a {
-    padding-right: 0;
 }
 
 .gh-head-menu .nav .nav-submenu-arrow {
@@ -996,17 +992,12 @@
     background: var(--color-bggrey, rgba(0, 0, 0, 0.04));
 }
 
-.gh-head-menu .nav .nav-submenu .nav-current a {
-    color: var(--ghost-accent-color, #15171a);
-    font-weight: 600;
+/* Only show /tag/* items in the dropdown — filter out anything else */
+.gh-head-menu .nav-submenu li:not(:has(a[href^="/tag/"])) {
+    display: none;
 }
 
-/* Mobile: burger menu open — flatten the dropdown into the column flow */
 @media (max-width: 900px) {
-    .gh-head-menu .nav .has-submenu {
-        display: block;
-    }
-
     .gh-head-menu .nav .nav-submenu-arrow {
         display: none;
     }
