@@ -62,7 +62,7 @@
                                 <span class="nav-submenu-arrow" aria-hidden="true">▾</span>
                                 <ul class="nav-submenu">
                                 {{#foreach @site.secondary_navigation}}
-                                    <li><a href="{{this.url}}">{{this.label}}</a></li>
+                                    <li{{#if this.current}} class="nav-current"{{/if}}><a href="{{this.url}}">{{this.label}}</a></li>
                                 {{/foreach}}
                                 </ul>
                             {{/if}}

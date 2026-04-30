@@ -1147,3 +1147,47 @@
         font-size: 1.5rem;
     }
 }
+
+/* ==========================================================================
+   Post page — visible breadcrumb above the article header
+   ========================================================================== */
+
+.post-breadcrumb {
+    justify-content: flex-start;
+    margin: 4rem 0 1.6rem;
+    font-size: 1.4rem;
+    color: var(--color-midgrey, #738a94);
+}
+
+.post-breadcrumb .breadcrumb-current {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 50ch;
+    color: var(--color-midgrey, #738a94);
+    font-weight: 400;
+}
+
+@media (max-width: 540px) {
+    .post-breadcrumb {
+        margin: 2.4rem 0 1.2rem;
+    }
+
+    /* Drop the article title from breadcrumb on small screens — title is right
+       below it anyway */
+    .post-breadcrumb .breadcrumb-current,
+    .post-breadcrumb .breadcrumb-current + .breadcrumb-sep,
+    .post-breadcrumb > :nth-last-child(1),
+    .post-breadcrumb > :nth-last-child(2) {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   Dropdown — current-tag highlight
+   ========================================================================== */
+
+.gh-head-menu .nav .nav-submenu .nav-current a {
+    color: var(--ghost-accent-color, #ff572f) !important;
+    font-weight: 600;
+}

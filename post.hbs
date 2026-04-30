@@ -47,6 +47,18 @@
 <main class="site-main">
 
     {{#post}}
+        <nav class="breadcrumb post-breadcrumb gh-canvas" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span class="breadcrumb-sep" aria-hidden="true">›</span>
+            {{#if primary_tag}}
+                {{#primary_tag}}<a href="{{url}}">{{name}}</a>{{/primary_tag}}
+            {{else}}
+                <a href="/posts/">所有文章</a>
+            {{/if}}
+            <span class="breadcrumb-sep" aria-hidden="true">›</span>
+            <span class="breadcrumb-current">{{title}}</span>
+        </nav>
+
         {{> "content" width="wide"}}
     {{/post}}
 
