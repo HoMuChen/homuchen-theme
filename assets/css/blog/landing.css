@@ -1045,8 +1045,18 @@
    Tag page — topical hub hero
    ========================================================================== */
 
+/* Kill default top padding so the gray hero butts right up to the header */
+.tag-template .site-content {
+    padding-top: 0;
+}
+
+/* Breathing room between the gray hero and the article list */
+.site-main > .tag-hero + .post-feed {
+    margin-top: 4rem;
+}
+
 .tag-hero {
-    padding: 5rem 0 3rem;
+    padding: 6rem 0 4rem;
     background-color: var(--lighter-gray-color, #f7f8fa);
     border-bottom: 1px solid var(--color-border, rgba(0, 0, 0, 0.06));
 }
