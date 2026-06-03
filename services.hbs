@@ -1,48 +1,95 @@
 {{!< default}}
-{{!-- Static route template for /services/ --}}
+{{!-- Static route template for /services/ — conversion-focused landing page.
+     Service content is intentionally hardcoded here (not pulled from #service
+     Pages) so each card can show target audience + a feature checklist. --}}
 
-<main class="site-main">
+<main class="site-main services-main">
 
-    <header class="single-header gh-canvas">
-        <h1 class="single-title">專業服務</h1>
-        <div class="single-excerpt">
-            讓 AI 真正融入你的工作流程
-        </div>
-    </header>
-
-    {{!-- Service Cards — 自動抓取所有標記 #service internal tag 的 Pages --}}
-    <div class="landing-services gh-canvas">
-        {{#get "pages" filter="tag:hash-service" limit="all" include="tags"}}
-            {{#if pages}}
-            <div class="landing-services-grid">
-                {{#foreach pages}}
-                <div class="landing-service-card">
-                    {{#if feature_image}}
-                        <div class="landing-service-image">
-                            <img
-                                src="{{img_url feature_image size="m"}}"
-                                alt="{{title}}"
-                                loading="lazy"
-                            >
-                        </div>
-                    {{/if}}
-                    <h2 class="landing-service-name">{{title}}</h2>
-                    {{#if custom_excerpt}}
-                        <p class="landing-service-desc">{{custom_excerpt}}</p>
-                    {{else if excerpt}}
-                        <p class="landing-service-desc">{{excerpt words="30"}}</p>
-                    {{/if}}
-                    <a href="{{url}}" class="landing-service-link">了解更多 {{> "icons/chevron-right"}}</a>
-                </div>
-                {{/foreach}}
+    {{!-- Hero --}}
+    <section class="services-hero gh-outer">
+        <div class="services-hero-inner gh-inner">
+            <h1 class="services-hero-title">讓 AI 真正幫你把事情做完</h1>
+            <p class="services-hero-desc">我是工程師阿穆。從 AI 自動化、客製系統到品牌網站，幫你把「想做卻一直沒時間做」的事，變成真的會跑的系統。</p>
+            <div class="services-hero-cta">
+                <a href="/contact/" class="gh-btn gh-primary-btn home-btn-primary">預約免費諮詢</a>
+                <a href="#services" class="gh-btn home-btn-secondary">看服務項目</a>
             </div>
-            {{else}}
-            <p class="no-services">尚未新增服務。請在 Ghost Admin 建立 Page 並加上 <code>#service</code> tag。</p>
-            {{/if}}
-        {{/get}}
-    </div>
+        </div>
+    </section>
 
-    {{!-- Process Section --}}
+    {{!-- Service cards --}}
+    <section id="services" class="landing-services gh-outer">
+        <div class="gh-inner">
+            <div class="landing-services-grid">
+
+                <div class="landing-service-card">
+                    <div class="landing-service-icon">🤖</div>
+                    <h2 class="landing-service-name">AI 自動化工作流</h2>
+                    <p class="landing-service-target">適合：每天被重複性工作吃掉時間的個人或團隊</p>
+                    <p class="landing-service-desc">把你手動重複做的流程，交給 AI Agent 自動跑。</p>
+                    <ul class="landing-service-features">
+                        <li>盤點哪些環節能自動化</li>
+                        <li>串接你現有的工具（表單、Email、試算表）</li>
+                        <li>不用寫程式也能維護</li>
+                    </ul>
+                    <a href="/ai-automation-workflow/" class="landing-service-link">了解更多 {{> "icons/chevron-right"}}</a>
+                </div>
+
+                <div class="landing-service-card">
+                    <div class="landing-service-icon">⚙️</div>
+                    <h2 class="landing-service-name">AI 客製化系統建置</h2>
+                    <p class="landing-service-target">適合：有特定需求、現成工具滿足不了的團隊</p>
+                    <p class="landing-service-desc">依你的業務流程，量身打造專屬的 AI 系統。</p>
+                    <ul class="landing-service-features">
+                        <li>客製 AI Agent／內部工具</li>
+                        <li>整合公司既有的資料與系統</li>
+                        <li>從規劃、建置到交付一手包辦</li>
+                    </ul>
+                    <a href="/ai-custom-system/" class="landing-service-link">了解更多 {{> "icons/chevron-right"}}</a>
+                </div>
+
+                <div class="landing-service-card">
+                    <div class="landing-service-icon">🌐</div>
+                    <h2 class="landing-service-name">電商／品牌網站建置</h2>
+                    <p class="landing-service-target">適合：想要一個有質感官網或商店的個人品牌與店家</p>
+                    <p class="landing-service-desc">從 0 打造好看又好用的網站。</p>
+                    <ul class="landing-service-features">
+                        <li>品牌官網／電商商店</li>
+                        <li>SEO 友善、手機優先</li>
+                        <li>後台好維護，能自己更新</li>
+                    </ul>
+                    <a href="/ecommerce-brand-website/" class="landing-service-link">了解更多 {{> "icons/chevron-right"}}</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    {{!-- Why me --}}
+    <section class="services-why gh-outer">
+        <div class="gh-inner">
+            <h2 class="home-section-title">為什麼選我</h2>
+            <div class="services-why-grid">
+                <div class="services-why-card">
+                    <div class="services-why-icon">🛠</div>
+                    <h3 class="services-why-title">真．工程師</h3>
+                    <p class="services-why-desc">我自己寫程式，不是只會講理論。技術細節能落地，做出來的東西是真的會動的。</p>
+                </div>
+                <div class="services-why-card">
+                    <div class="services-why-icon">📚</div>
+                    <h3 class="services-why-title">教得會非技術人</h3>
+                    <p class="services-why-desc">長期在做 AI 教育，最擅長把複雜的東西講到你能懂、能參與，最後還能自己維護。</p>
+                </div>
+                <div class="services-why-card">
+                    <div class="services-why-icon">🚀</div>
+                    <h3 class="services-why-title">實戰專案經驗</h3>
+                    <p class="services-why-desc">做過實際的 AI 專案與系統，知道從一個想法到真的上線，中間會踩哪些坑。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{!-- Process --}}
     <section class="landing-process gh-canvas">
         <h2 class="home-section-title">服務流程</h2>
         <div class="landing-process-steps">
@@ -61,7 +108,7 @@
             <div class="landing-process-step">
                 <div class="landing-process-number">3</div>
                 <h3>執行建置</h3>
-                <p>實作 AI 工作流</p>
+                <p>實作並與你確認方向</p>
             </div>
             <div class="landing-process-arrow">{{> "icons/chevron-right"}}</div>
             <div class="landing-process-step">
@@ -72,11 +119,78 @@
         </div>
     </section>
 
-    {{!-- CTA --}}
+    {{!-- FAQ --}}
+    <section class="services-faq gh-canvas">
+        <h2 class="home-section-title">常見問題</h2>
+        <div class="services-faq-list">
+            <details class="services-faq-item">
+                <summary>我完全不懂技術，也能合作嗎？</summary>
+                <p>可以！我最擅長的就是把技術翻成你聽得懂的話，整個過程你都能參與、看得懂，不會被一堆名詞嚇跑。</p>
+            </details>
+            <details class="services-faq-item">
+                <summary>一個專案大概要多久？</summary>
+                <p>看範圍。自動化流程通常幾週就能跑起來，客製系統與網站會再長一些。免費諮詢時我會給你一個具體的時程。</p>
+            </details>
+            <details class="services-faq-item">
+                <summary>費用怎麼算？</summary>
+                <p>每個專案需求都不太一樣，我會在免費諮詢、了解你的狀況之後，依範圍報價，不會有隱藏費用。</p>
+            </details>
+            <details class="services-faq-item">
+                <summary>做完之後我自己能維護嗎？</summary>
+                <p>能。我會盡量用你能維護的方式來建置，並交付說明文件，讓你之後可以自己更新、不用一直回來找我。</p>
+            </details>
+        </div>
+    </section>
+
+    {{!-- Final CTA --}}
     <section class="landing-cta gh-canvas">
-        <h2>有興趣？預約免費諮詢</h2>
-        <p>告訴我你的需求，我們一起找出最適合的方案。</p>
-        <a href="/contact/" class="gh-btn gh-primary-btn home-btn-primary">預約諮詢</a>
+        <h2>有想做的事，先聊聊吧</h2>
+        <p>一次免費諮詢，告訴我你的狀況，我們一起找出最適合的做法。</p>
+        <a href="/contact/" class="gh-btn gh-primary-btn home-btn-primary">預約免費諮詢</a>
     </section>
 
 </main>
+
+{{!-- FAQ structured data — helps Google rich results & AI answer engines --}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "我完全不懂技術，也能合作嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "可以！我最擅長的就是把技術翻成你聽得懂的話，整個過程你都能參與、看得懂，不會被一堆名詞嚇跑。"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "一個專案大概要多久？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "看範圍。自動化流程通常幾週就能跑起來，客製系統與網站會再長一些。免費諮詢時我會給你一個具體的時程。"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "費用怎麼算？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "每個專案需求都不太一樣，我會在免費諮詢、了解你的狀況之後，依範圍報價，不會有隱藏費用。"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "做完之後我自己能維護嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "能。我會盡量用你能維護的方式來建置，並交付說明文件，讓你之後可以自己更新、不用一直回來找我。"
+            }
+        }
+    ]
+}
+</script>
+
+{{#contentFor "body_class"}} services-landing{{/contentFor}}
