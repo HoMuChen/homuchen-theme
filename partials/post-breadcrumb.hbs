@@ -1,0 +1,48 @@
+{{!--
+BreadcrumbList structured data for post pages (no visible breadcrumb —
+the centered post header already shows the tag + title, so a visible
+breadcrumb would just duplicate them). This JSON-LD is what feeds
+Google's breadcrumb rich result and GSC's 導覽標記 report.
+Must be rendered inside a {{#post}} block (uses primary_tag, title, url).
+--}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "{{@site.url}}/"
+        },
+        {{#if primary_tag}}
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "{{primary_tag.name}}",
+            "item": "{{#primary_tag}}{{url absolute="true"}}{{/primary_tag}}"
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "{{title}}",
+            "item": "{{url absolute="true"}}"
+        }
+        {{else}}
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "所有文章",
+            "item": "{{@site.url}}/posts/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "{{title}}",
+            "item": "{{url absolute="true"}}"
+        }
+        {{/if}}
+    ]
+}
+</script>
