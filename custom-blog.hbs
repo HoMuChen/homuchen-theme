@@ -4,6 +4,36 @@ This is a custom page template for displaying all blog posts grouped by category
 It can be selected from the Ghost admin panel when editing a page.
 --}}
 
+{{!-- Structured data: this is a CollectionPage (article index), not an Article.
+     Ghost's ghost_head still emits its own Article schema — both can coexist. --}}
+{{#post}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{@site.url}}/" },
+                { "@type": "ListItem", "position": 2, "name": "{{title}}", "item": "{{url absolute="true"}}" }
+            ]
+        },
+        {
+            "@type": "CollectionPage",
+            "name": "{{title}}",
+            "description": "{{#if custom_excerpt}}{{custom_excerpt}}{{else}}阿穆的所有文章：AI Agent、Web 開發、讀書筆記、生活生產力。{{/if}}",
+            "url": "{{url absolute="true"}}",
+            "isPartOf": {
+                "@type": "WebSite",
+                "url": "{{@site.url}}",
+                "name": "{{@site.title}}"
+            }
+        }
+    ]
+}
+</script>
+{{/post}}
+
 <main class="site-main">
 
     {{#post}}
