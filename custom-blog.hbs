@@ -7,34 +7,16 @@ It can be selected from the Ghost admin panel when editing a page.
 <main class="site-main">
 
     {{#post}}
-        {{!-- Respect "Show title and feature image" setting from admin panel --}}
-        {{#match @page.show_title_and_feature_image}}
-            <header class="single-header gh-canvas">
-                <h1 class="single-title">{{title}}</h1>
+        {{!-- Page H1 + intro. Always render the H1 so the index page has a
+             proper top-level heading; the intro comes from the Page's excerpt. --}}
+        <header class="blog-index-header gh-canvas">
+            <h1 class="blog-index-title">{{title}}</h1>
+            {{#if custom_excerpt}}
+                <p class="blog-index-intro">{{custom_excerpt}}</p>
+            {{/if}}
+        </header>
 
-                {{#if custom_excerpt}}
-                    <div class="single-excerpt">
-                        {{custom_excerpt}}
-                    </div>
-                {{/if}}
-
-                {{#if feature_image}}
-                    <figure class="single-media kg-width-wide">
-                        <img
-                            srcset="{{> "srcset"}}"
-                            sizes="(min-width: 1023px) 920px, calc(90vw)"
-                            src="{{img_url feature_image size="l"}}"
-                            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-                        >
-                        {{#if feature_image_caption}}
-                            <figcaption>{{feature_image_caption}}</figcaption>
-                        {{/if}}
-                    </figure>
-                {{/if}}
-            </header>
-        {{/match}}
-
-        {{!-- Optional page content --}}
+        {{!-- Optional page body content (rendered if the Page has body text) --}}
         {{#if html}}
             <div class="single-content gh-content gh-canvas">
                 {{content}}
@@ -50,7 +32,7 @@ It can be selected from the Ghost admin panel when editing a page.
                     <section class="blog-category gh-canvas">
                         <header class="blog-category-header">
                             <div class="blog-category-header-left">
-                                <a href="{{../url}}" class="blog-category-name">{{../name}}</a>
+                                <h2 class="blog-category-name"><a href="{{../url}}">{{../name}}</a></h2>
                                 {{#if ../description}}
                                     <p class="blog-category-desc">{{../description}}</p>
                                 {{/if}}

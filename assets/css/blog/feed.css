@@ -318,6 +318,26 @@
    Blog category index
    ========================================= */
 
+.blog-index-header {
+    padding: 7vmin 0 1vmin;
+}
+
+.blog-index-title {
+    margin: 0;
+    font-size: 3.2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--title-color, var(--primary-text-color));
+}
+
+.blog-index-intro {
+    max-width: 680px;
+    margin: 1.2rem 0 0;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: var(--secondary-text-color);
+}
+
 .blog-category {
     padding: 5vmin 0;
 }
@@ -338,15 +358,20 @@
 }
 
 .blog-category-name {
+    margin: 0;
     font-size: 2.2rem;
     font-weight: 700;
     letter-spacing: -0.02em;
-    color: var(--title-color);
+    line-height: 1.2;
+}
+
+.blog-category-name a {
+    color: var(--title-color, var(--primary-text-color));
     text-decoration: none;
     transition: color 0.2s;
 }
 
-.blog-category-name:hover {
+.blog-category-name a:hover {
     color: var(--brand-color);
 }
 
