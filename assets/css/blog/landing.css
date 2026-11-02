@@ -20,7 +20,8 @@
     position: relative;
     background-color: #09192c;
     color: #fff;
-    padding: 16vmin 0;
+    padding-top: 16vmin;
+    padding-bottom: 16vmin;
     text-align: center;
     min-height: 70vh;
     display: flex;
@@ -116,7 +117,8 @@
    ============================================ */
 
 .home-values {
-    padding: 6vmin 0;
+    padding-top: 6vmin;
+    padding-bottom: 6vmin;
 }
 
 .home-values-inner {
@@ -187,7 +189,8 @@
    ============================================ */
 
 .home-featured {
-    padding: 4vmin 0;
+    padding-top: 4vmin;
+    padding-bottom: 4vmin;
     background-color: var(--lighter-gray-color);
 }
 
@@ -266,7 +269,8 @@
    ============================================ */
 
 .home-about {
-    padding: 6vmin 0;
+    padding-top: 6vmin;
+    padding-bottom: 6vmin;
 }
 
 .home-about-inner {
@@ -310,7 +314,8 @@
 
 .home-newsletter {
     background-color: var(--lighter-gray-color);
-    padding: 6vmin 0;
+    padding-top: 6vmin;
+    padding-bottom: 6vmin;
     text-align: center;
 }
 
@@ -341,7 +346,8 @@
 .services-hero {
     background-color: #09192c;
     color: #fff;
-    padding: 12vmin 0;
+    padding-top: 12vmin;
+    padding-bottom: 12vmin;
     text-align: center;
 }
 
@@ -382,7 +388,8 @@
    ============================================ */
 
 .landing-services {
-    padding: 6vmin 0;
+    padding-top: 6vmin;
+    padding-bottom: 6vmin;
 }
 
 .landing-services-grid {
@@ -558,7 +565,8 @@
 
 .services-why {
     background-color: var(--lighter-gray-color);
-    padding: 6vmin 0;
+    padding-top: 6vmin;
+    padding-bottom: 6vmin;
 }
 
 .services-why-grid {
@@ -799,7 +807,8 @@
 .course-hero {
     background-color: #09192c;
     color: #fff;
-    padding: 6vmin 0;
+    padding-top: 6vmin;
+    padding-bottom: 6vmin;
     text-align: center;
 }
 
@@ -936,7 +945,8 @@
 @media (max-width: 768px) {
     .home-hero {
         min-height: 60vh;
-        padding: 12vmin 0;
+        padding-top: 12vmin;
+        padding-bottom: 12vmin;
     }
 
     .home-hero-title {

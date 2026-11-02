@@ -128,3 +128,18 @@
         margin-top: 3rem;
     }
 }
+
+/* Tables: let cells wrap instead of the shared-theme-assets nowrap,
+   so text-heavy tables fit the phone width. min-width keeps short
+   values ("2026 Q3", "$45.9 億") on one line; wide tables still scroll. */
+.gh-content table:not(.gist table) {
+    font-size: 1.5rem;
+    white-space: normal;
+}
+
+.gh-content table:not(.gist table) th,
+.gh-content table:not(.gist table) td {
+    min-width: 5em;
+    padding: 8px 10px;
+    line-height: 1.55;
+}
