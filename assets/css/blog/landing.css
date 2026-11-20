@@ -1333,3 +1333,8 @@
     color: var(--ghost-accent-color, #ff572f) !important;
     font-weight: 600;
 }
+
+.landing-service-features a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
