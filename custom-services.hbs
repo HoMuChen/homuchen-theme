@@ -43,7 +43,7 @@ Select this template from Ghost admin when editing a page.
 
     {{!-- Services list section --}}
     <div class="services-feed gh-canvas">
-        {{#get "posts" filter="tag:service" limit="all" include="tags,authors"}}
+        {{#get "posts" filter="tag:service" limit="100" include="tags,authors"}}
             {{#foreach posts}}
                 <article class="service-item {{post_class}}">
                     <div class="service-image">

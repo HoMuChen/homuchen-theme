@@ -54,8 +54,9 @@ It can be selected from the Ghost admin panel when editing a page.
         {{/if}}
     {{/post}}
 
-    {{!-- Categories with post previews --}}
-    {{#get "tags" limit="all" filter="visibility:public+slug:-service" order="name asc"}}
+    {{!-- Categories with post previews：只列 4 大分類（primary tag）。
+         Ghost 6.x 的 {{#get}} 最多 100 筆、不支援 limit="all"，掃全部 tag 會漏掉排在後面的中文分類 --}}
+    {{#get "tags" limit="4" filter="slug:[ai,web-development,sheng-huo,du-shu-bi-ji]" order="name asc"}}
         {{#foreach tags}}
             {{#get "posts" filter="primary_tag:{{slug}}" limit="3" include="tags,authors"}}
                 {{#if posts}}

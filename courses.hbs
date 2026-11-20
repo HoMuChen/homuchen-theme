@@ -12,7 +12,7 @@
 
     {{!-- Course Cards — 自動抓取所有標記 #course internal tag 的 Pages --}}
     <div class="landing-courses gh-canvas">
-        {{#get "pages" filter="tag:hash-course" limit="all" include="tags"}}
+        {{#get "pages" filter="tag:hash-course" limit="100" include="tags"}}
             {{#if pages}}
                 {{#foreach pages}}
                 <div class="landing-course-card">
